@@ -1,69 +1,58 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "node": true
+    env: {
+        browser: true,
+        node: true
     },
-    "globals": {
-      "exports": false,
+    globals: {
+        exports: false
     },
-    "extends": "eslint:recommended",
-    "rules": {
+    extends: "eslint:recommended",
+    rules: {
         "accessor-pairs": "error",
         "array-callback-return": "error",
         "arrow-body-style": "error",
         "arrow-parens": "error",
         "arrow-spacing": "error",
-        "block-spacing": [
-            "error",
-            "always"
-        ],
+        "block-spacing": ["error", "always"],
         "callback-return": "error",
-        "camelcase": "error",
+        camelcase: "error",
         "comma-spacing": [
             "error",
             {
-                "after": true,
-                "before": false
+                after: true,
+                before: false
             }
         ],
-        "comma-style": [
-            "error",
-            "last"
-        ],
-        "complexity": "error",
-        "computed-property-spacing": [
-            "error",
-            "never"
-        ],
+        "comma-style": ["error", "last"],
+        complexity: "error",
+        "computed-property-spacing": ["error", "never"],
         "consistent-return": "error",
         "consistent-this": "error",
-        "curly": "error",
+        curly: "error",
         "default-case": "error",
         "dot-location": "error",
         "dot-notation": "error",
         "eol-last": "error",
-        "eqeqeq": "error",
+        eqeqeq: "error",
         "generator-star-spacing": "error",
         "guard-for-in": "error",
         "handle-callback-err": "error",
         "id-blacklist": "error",
         "id-match": "error",
-        "indent": [ "error", 2 ],
+        indent: ["error", 2],
         "jsx-quotes": "error",
         "key-spacing": [
-          "error", {
-            "beforeColon": false,
-            "afterColon": true
-          }
+            "error",
+            {
+                beforeColon: false,
+                afterColon: true
+            }
         ],
         "keyword-spacing": "error",
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "linebreak-style": ["error", "unix"],
         "lines-around-comment": "error",
         "max-depth": "error",
-        "max-len": [ "error", 120 ],
+        "max-len": ["error", 120],
         "max-nested-callbacks": "error",
         "max-params": "error",
         "new-cap": "error",
@@ -90,10 +79,7 @@ module.exports = {
         "no-implicit-coercion": "error",
         "no-implicit-globals": "warn",
         "no-implied-eval": "error",
-        "no-inner-declarations": [
-            "error",
-            "functions"
-        ],
+        "no-inner-declarations": ["error", "functions"],
         "no-invalid-this": "error",
         "no-iterator": "error",
         "no-label-var": "error",
@@ -153,17 +139,14 @@ module.exports = {
         "prefer-const": "error",
         "prefer-reflect": "error",
         "prefer-spread": "error",
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "radix": "error",
-        "semi": "error",
+        quotes: ["error", "single"],
+        radix: "error",
+        semi: "error",
         "semi-spacing": [
             "error",
             {
-                "after": true,
-                "before": false
+                after: true,
+                before: false
             }
         ],
         "sort-imports": "error",
@@ -173,22 +156,13 @@ module.exports = {
         "space-in-parens": "off",
         "space-infix-ops": "error",
         "space-unary-ops": "error",
-        "spaced-comment": [
-            "error",
-            "always"
-        ],
-        "strict": [
-            "error",
-            "never"
-        ],
+        "spaced-comment": ["error", "always"],
+        strict: ["error", "never"],
         "template-curly-spacing": "error",
         "valid-jsdoc": "error",
         "wrap-iife": "error",
         "wrap-regex": "error",
         "yield-star-spacing": "error",
-        "yoda": [
-            "error",
-            "never"
-        ]
+        yoda: ["error", "never"]
     }
 };
