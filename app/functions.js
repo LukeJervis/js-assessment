@@ -15,7 +15,16 @@ exports.functionsAnswers = {
         };
     },
 
-    makeClosures: function (arr, fn) {},
+    makeClosures: function (arr, fn) {
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            newArr.push(function () {
+                fn(arr[i]);
+            });
+        }
+        console.log("lkj", newArr);
+        return newArr;
+    },
 
     partial: function (fn, str1, str2) {
         return function (str3) {
