@@ -19,10 +19,9 @@ exports.functionsAnswers = {
         let newArr = [];
         for (let i = 0; i < arr.length; i++) {
             newArr.push(function () {
-                fn(arr[i]);
+                return fn(arr[i]);
             });
         }
-        console.log("lkj", newArr);
         return newArr;
     },
 
@@ -36,7 +35,13 @@ exports.functionsAnswers = {
         return a + b + c + d;
     },
 
-    callIt: function (fn) {},
+    callIt: function (fn) {
+        let arr = [];
+        for (let i = 1; i < arguments.length; i++) {
+            arr.push(arguments[i]);
+        }
+        return fn(...arr);
+    },
 
     partialUsingArguments: function (fn) {
         const argv = Array.prototype.slice.call(arguments, 1, arguments.length);
@@ -48,5 +53,13 @@ exports.functionsAnswers = {
         };
     },
 
-    curryIt: function (fn) {}
+    curryIt: function (fn) {
+        return function (a) {
+            return function (b) {
+                return function (c) {
+                    return fn(a, b, c);
+                };
+            };
+        };
+    }
 };
