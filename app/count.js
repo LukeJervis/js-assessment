@@ -2,20 +2,23 @@ exports = typeof window === "undefined" ? global : window;
 
 exports.countAnswers = {
     count: function (start, end) {
-        const result = [start];
-        let num = start;
+        let time = start;
+        let stop = false;
 
-        const counter = () => {
-            num++;
-            result.push(num);
+        const ticker = () => {
+            if (time <= end && !stop) {
+                console.log(time);
+                time++;
+                setTimeout(ticker, 100);
+            }
         };
 
-        const timer = setInterval(counter(), 100);
+        ticker();
 
-        if ((num = end)) {
-            clearInterval(timer);
-        }
-
-        console.log(result);
+        return {
+            cancel: () => {
+                stop = !stop;
+            }
+        };
     }
 };
