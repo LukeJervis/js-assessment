@@ -46,10 +46,7 @@ exports.arraysAnswers = {
     },
 
     concat: function (arr1, arr2) {
-        for (i = 0; i < arr2.length; i++) {
-            arr1.push(arr2[i]);
-        }
-        return arr1;
+        return arr1.concat(arr2);
     },
 
     insert: function (arr, item, index) {
@@ -59,46 +56,35 @@ exports.arraysAnswers = {
 
     count: function (arr, item) {
         let count = 0;
-        for (i = 0; i < arr.length; i++) {
-            if (arr[i] === item) {
-                count++;
-            }
-        }
+        arr.filter((num) => (num === item ? count++ : null));
         return count;
     },
 
     duplicates: function (arr) {
-        const sortArray = arr.sort();
         let dupeNums = [];
-        for (let i = 0; i < arr.length; i++) {
-            if (
-                sortArray[i] === sortArray[i + 1] &&
-                !dupeNums.includes(sortArray[i])
-            ) {
-                dupeNums.push(sortArray[i]);
-            }
-        }
+
+        arr.filter((num, index) =>
+            arr.indexOf(num) !== index && !dupeNums.includes(num)
+                ? dupeNums.push(num)
+                : null
+        );
+
         return dupeNums;
     },
 
     square: function (arr) {
-        let result = [];
-        for (let i = 0; i < arr.length; i++) {
-            result.push(arr[i] ** 2);
-        }
-        return result;
+        return arr.map((num) => num ** 2);
     },
 
     findAllOccurrences: function (arr, target) {
-        const hits = arr.filter((n) => n === 1).length;
-        let targetIndex = 0;
         let result = [];
 
-        for (let i = 0; i < hits; i++) {
-            let hit = arr.indexOf(target, targetIndex);
-            targetIndex = hit + 1;
-            result.push(hit);
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === target) {
+                result.push(arr.indexOf(arr[i], i));
+            }
         }
+
         return result;
     }
 };

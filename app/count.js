@@ -17,7 +17,7 @@ exports.countAnswers = {
 
         return {
             cancel: () => {
-                stop = !stop;
+                stop = true;
             }
         };
     }

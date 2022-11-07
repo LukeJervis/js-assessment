@@ -17,29 +17,28 @@ exports.functionsAnswers = {
 
     makeClosures: function (arr, fn) {
         let newArr = [];
-        for (let i = 0; i < arr.length; i++) {
-            newArr.push(function () {
-                return fn(arr[i]);
+
+        arr.map((el) => {
+            newArr.push(() => {
+                return fn(el);
             });
-        }
+        });
+
         return newArr;
     },
 
     partial: function (fn, str1, str2) {
-        return function (str3) {
-            return fn(str1, str2, str3);
-        };
+        return fn.bind(this, str1, str2);
     },
 
-    useArguments: function (a, b = 0, c = 0, d = 0) {
-        return a + b + c + d;
+    useArguments: function () {
+        const arr = [...arguments];
+        return arr.reduce((i, j) => i + j);
     },
 
     callIt: function (fn) {
-        let arr = [];
-        for (let i = 1; i < arguments.length; i++) {
-            arr.push(arguments[i]);
-        }
+        let arr = [...arguments];
+        arr.shift();
         return fn(...arr);
     },
 
@@ -54,9 +53,9 @@ exports.functionsAnswers = {
     },
 
     curryIt: function (fn) {
-        return function (a) {
-            return function (b) {
-                return function (c) {
+        return (a) => {
+            return (b) => {
+                return (c) => {
                     return fn(a, b, c);
                 };
             };
