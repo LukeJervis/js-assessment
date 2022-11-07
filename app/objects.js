@@ -5,7 +5,9 @@ exports.objectsAnswers = {
         return fn.apply(obj);
     },
 
-    alterObjects: function (constructor, greeting) {},
+    alterObjects: function (constructor, greeting) {
+        constructor.prototype.greeting = greeting;
+    },
 
     iterate: function (obj) {
         const arr = [];
