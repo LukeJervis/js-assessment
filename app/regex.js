@@ -14,14 +14,14 @@ exports.regexAnswers = {
     },
 
     captureThreeNumbers: function (str) {
-        if (/\d\d\d/.test(str)) {
+        if (/\d{3}/.test(str)) {
             return str.match(/\d\d\d/).toString();
         }
         return false;
     },
 
     matchesPattern: function (str) {
-        return /^\d\d\d\-\d\d\d\-\d\d\d\d$/.test(str);
+        return /^\d{3}\-\d{3}\-\d{4}$/.test(str);
     },
 
     isUSD: function (str) {

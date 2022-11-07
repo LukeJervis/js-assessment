@@ -22,11 +22,7 @@ exports.stringsAnswers = {
     wordWrap: function (str, cols) {},
 
     reverseString: function (str) {
-        let arr = [];
-
-        for (let i = 0; i < str.length; i++) {
-            arr.push(str[i]);
-        }
+        let arr = [...str];
         arr.reverse();
 
         return arr.join("");
