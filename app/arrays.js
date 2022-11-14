@@ -55,21 +55,16 @@ exports.arraysAnswers = {
     },
 
     count: function (arr, item) {
-        let count = 0;
-        arr.filter((num) => (num === item ? count++ : null));
-        return count;
+        return arr.filter((num) => num === item).length;
     },
 
     duplicates: function (arr) {
-        let dupeNums = [];
+        const seenTimes = new Map();
 
-        arr.filter((num, index) =>
-            arr.indexOf(num) !== index && !dupeNums.includes(num)
-                ? dupeNums.push(num)
-                : null
-        );
-
-        return dupeNums;
+        return arr.filter((num) => {
+            seenTimes.set(num, (seenTimes.get(num) ?? 0) + 1);
+            return seenTimes.get(num) === 2;
+        });
     },
 
     square: function (arr) {
@@ -81,7 +76,7 @@ exports.arraysAnswers = {
 
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] === target) {
-                result.push(arr.indexOf(arr[i], i));
+                result.push(i);
             }
         }
 

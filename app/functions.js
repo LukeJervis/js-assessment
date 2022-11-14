@@ -16,24 +16,15 @@ exports.functionsAnswers = {
     },
 
     makeClosures: function (arr, fn) {
-        let newArr = [];
-
-        arr.map((el) => {
-            newArr.push(() => {
-                return fn(el);
-            });
-        });
-
-        return newArr;
+        return arr.map((el) => () => fn(el));
     },
 
     partial: function (fn, str1, str2) {
         return fn.bind(this, str1, str2);
     },
 
-    useArguments: function () {
-        const arr = [...arguments];
-        return arr.reduce((i, j) => i + j);
+    useArguments: function (...args) {
+        return args.reduce((i, j) => i + j);
     },
 
     callIt: function (fn) {
@@ -42,23 +33,20 @@ exports.functionsAnswers = {
         return fn(...arr);
     },
 
-    partialUsingArguments: function (fn) {
-        const argv = Array.prototype.slice.call(arguments, 1, arguments.length);
-        return function () {
-            const more_argv = argv.concat(
-                Array.prototype.slice.call(arguments)
-            );
-            return fn.apply(null, more_argv);
+    partialUsingArguments: function (fn, ...args) {
+        return function (...more_args) {
+            return fn.apply(null, args.concat(more_args));
         };
     },
 
-    curryIt: function (fn) {
-        return (a) => {
-            return (b) => {
-                return (c) => {
-                    return fn(a, b, c);
-                };
-            };
+    // Discuss with Alex about this one
+    curryIt: function (fn, ...args) {
+        if (args.length >= fn.length) {
+            return fn(...args);
+        }
+
+        return (arg) => {
+            return this.curryIt(fn, ...args, arg);
         };
     }
 };

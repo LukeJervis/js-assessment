@@ -2,14 +2,14 @@ exports = typeof window === "undefined" ? global : window;
 
 exports.countAnswers = {
     count: function (start, end) {
-        let time = start;
-        let stop = false;
+        let count = start;
+        let timer = null;
 
         const ticker = () => {
-            if (time <= end && !stop) {
-                console.log(time);
-                time++;
-                setTimeout(ticker, 100);
+            if (count <= end) {
+                console.log(count);
+                count++;
+                timer = setTimeout(ticker, 100);
             }
         };
 
@@ -17,7 +17,7 @@ exports.countAnswers = {
 
         return {
             cancel: () => {
-                stop = true;
+                clearTimeout(timer);
             }
         };
     }

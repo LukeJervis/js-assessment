@@ -18,4 +18,9 @@ exports.objectsAnswers = {
         }
         return arr;
     }
+
+    // ALEX'S SOLUTION
+    // iterate: function (obj) {
+    //     return Object.entries(obj).map(([key, value]) => `${key}: ${value}`);
+    // }
 };

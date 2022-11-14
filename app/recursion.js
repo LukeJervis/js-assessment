@@ -4,30 +4,24 @@ exports.recursionAnswers = {
     listFiles: function (data, dirName) {
         let files = [];
 
-        const filter = (dir) => {
-            if (dirName === undefined) {
-                return true;
-            } else {
-                return dir === dirName;
+        const tbs = () => {
+            for (const [key, value] of Object.entries(data)) {
+                if (key === "files") {
+                    for (let i = 0; i < value.length; i++) {
+                        if (typeof value[i] === "string") {
+                            files.push(value[i]);
+                        } else if (typeof value[i] === "object") {
+                            files.push(
+                                exports.recursionAnswers.listFiles(value[i])
+                            );
+                        }
+                    }
+                }
             }
         };
 
-        const tbd = (file) => {
-            if (typeof file === "string" && filter(data.dir)) {
-                files.push(file);
-            } else if (typeof file === "object") {
-                files.concat(
-                    exports.recursionAnswers.listFiles(
-                        file,
-                        filter(data.dir) ? undefined : dirName
-                    )
-                );
-            }
-        };
-
-        data.files.forEach((file) => tbd(file));
-
-        return files;
+        tbs();
+        return files.flat(Infinity);
     },
 
     permute: function (arr) {
